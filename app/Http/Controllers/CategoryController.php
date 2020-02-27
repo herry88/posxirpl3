@@ -14,8 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        //select * from categories ORDER BY created_at DESC
+        $categories = Category::orderBy('created_at','DESC')->paginate(10);
         //halaman category 
-        return view('layouts.category.index');
+        return view('layouts.category.index',compact('categories'));
         // return view('layouts.master');
     }
 

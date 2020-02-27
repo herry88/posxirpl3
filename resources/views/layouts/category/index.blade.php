@@ -35,13 +35,13 @@
                         <div class="form-group row">
                           <label for="inputEmail3" class="col-sm-5 col-form-label">Name</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
+                            <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="Email">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="inputPassword3" class="col-sm-5 col-form-label">Description</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputPassword3" placeholder="Password">
+                            <input type="text" name="description" class="form-control" id="inputPassword3" placeholder="Password">
                           </div>
                         </div>
                         
@@ -78,16 +78,25 @@
                               <th style="width: 10px">#</th>
                               <th>Name</th>
                               <th>Description</th>
-                              <th style="width: 40px">Label</th>
+                              <th style="width: 40px">Tools</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>ok</td>
-                            </tr>
-                            <tr>
-                              <td>ok</td>
-                            </tr>                            </tr>
+                            @php
+                             $no = 1;   
+                            @endphp
+                            @forelse ($categories as $c)
+                                <tr>
+                                   <td>{{ $no++ }}</td>
+                                   <td>{{ $c->name }}</td>
+                                   <td>{{ $c->description }}</td>
+                                   <td>&nbsp;</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                  <td colspan="4" class="text-center">Tidak Ada Data</td>
+                                </tr>
+                            @endforelse
                           </tbody>
                         </table>
                       </div>
